@@ -3,22 +3,25 @@
 lst = [1, 2, 'soma']
 print(lst)
 print(type(list))
+
 # Tuples, sets and Dictionaries
 # Tuples: Orderd items can have duplicates and cannot manipulate(like constants) ex: ("soma",31) can be of different data types
 tple = ('soma', 21)
 print(tple)
 print(type(tple))
+
 # sets: un-ordered, have only keys as values and to be unique and can be of diff data types ex: {'soma','31'}
 st = {'soma', 31}
 print(st)
 print(type(st))
+
 # Dictionaries: Object like: Un-oredered items, with key-value pair , unique keys and can be of diff data type ex: {'name':'soma','age':31}
 dict = {'name': 'soma', 'age': 31}
 print(dict)
 print(type(dict))
 # in Dictionaries keys should be in quotes '' or ""
 
-# iterable Functions & Behaviours
+## iterable Functions & Behaviours
 
 # List comphrensions
 # to do operations over list elements

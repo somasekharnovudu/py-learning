@@ -30,13 +30,13 @@ def add_transaction(reciepiant, amount=1.0, sender=owner):
     open_transactions.append(new_transaction)
 
 
+def hash_block(block):
+    return '-'.join([str(block[key]) for key in block])
+
+
 def mine_block():
     last_block = blockchain[-1]
-    hash_block = '-'.join([str(last_block[key]) for key in last_block])
-    print(hash_block)
-    # for keys in last_block:
-    #     value = last_block[keys]
-    #     hash_string = hash_string + str(value)
+    hash_block = hash_block(last_block)
     block = {
         'previous_hash': str(hash_block),
         'transactions': open_transactions,
@@ -59,30 +59,12 @@ def get_user_choice():
 
 
 def verify_chain():
-    is_valid = True
-    for block_index in range(len(blockchain)):
-        block = blockchain[block_index]
-        if block_index == 0:
+    for (index, block) in enumerate(blockchain):
+        if (index == 0):
             continue
-        if block[0] != blockchain[block_index-1]:
-            is_valid = False
-            break
-    else:
-        print('-' * 20)
-    #  the below also works and above one is using 'range' range(5) will be 0 1 2 3 4 (exlucing that number from 0)
-    #  or range(5,10) will be 5 6 7 8 9
-    # or range(1,20,2) will be 1, 3, 5,...19 i.e 2 will be step for iteration
-    # for block in blockchain:
-    #     if block_index == 0:
-    #         block_index += 1
-    #         continue
-    #     if block[0] != blockchain[block_index-1]:
-    #         is_valid = False
-    #         break
-    #     block_index += 1
-    # else:
-    #     print('-' * 20)
-    return is_valid
+        if block['previous_hash'] != hash_block(blockchain[index-1]):
+            return False
+    return True
 
 
 continue_loop = True

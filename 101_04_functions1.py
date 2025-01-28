@@ -14,4 +14,4 @@ append_data(1, [0])
 append_data(2)
 append_data(3)
 append_data(4)
-append_data(last_item=2, new_item=1)
+append_data(last_item=2, new_item=1) # keyword arguments
