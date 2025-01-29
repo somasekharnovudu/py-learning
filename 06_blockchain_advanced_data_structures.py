@@ -116,12 +116,17 @@ def verify_chain():
     return True
 
 
+def validate_transactions():
+    return all([verify_transaction(tx['sender'], tx['amount']) for tx in open_transactions])
+
+
 continue_loop = True
 
 while (continue_loop):
     print('Please choose:')
     print('1. add new transaction')
     print('2. Print current block chain')
+    print('3. Check transaction validity')
     print('p. Print participants')
     print('h. Manipulate the block chain')
     print('m. Mine the block chain')
@@ -153,6 +158,11 @@ while (continue_loop):
         mine_block()
     elif user_choice == 'p':
         print(participants)
+    elif user_choice == '3':
+        if validate_transactions():
+            print('Transactions are valid')
+        else:
+            print('Transcations are not valid')
     else:
         print('Input invalid, Please choose again!')
     if not verify_chain():

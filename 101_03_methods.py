@@ -38,6 +38,14 @@ print(len(name))
 
 # range selector [1:2] gets the range with start included and end excluded
 # if we put -1 it will be from last index -1 will remove last 1 elem, -2 will remove last 2 elements
+# it shallow clones only
 list = [1, 2, 3]
 print(list[1:2])
+
+
+list = [1, 2, 3, -5]
+is_positive = [ele >= 0 for ele in list]
+print('===== is positive', is_positive)
+print('==== all', all(is_positive))
+print('==== any', any(is_positive))
 
